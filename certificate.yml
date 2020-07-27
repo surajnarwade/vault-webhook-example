@@ -1,0 +1,20 @@
+---
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: vault-webhook
+  namespace: kube-system
+spec:
+  commonName: vault-webhook.kube-system.svc
+  dnsNames:
+    - vault-webhook
+    - vault-webhook.kube-system
+    - vault-webhook.kube-system.svc
+    - vault-webhook.kube-system.svc.cluster.local
+  duration: 8760h
+  renewBefore: 720h
+  privateKey:
+    rotationPolicy: Always
+  secretName: vault-webhook-certs
+  issuerRef:
+    name: vault-webhook

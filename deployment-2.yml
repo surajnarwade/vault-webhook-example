@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: example2
+  name: example2
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: example2
+  template:
+    metadata:
+      labels:
+        run: example2
+    spec:
+      containers:
+      - image: alpine
+        imagePullPolicy: Always
+        name: example2
+      restartPolicy: Always
+      serviceAccount: myserviceaccount
+      volumes:
+      - name: vault-template
+        configMap:
+          name: my-template

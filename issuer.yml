@@ -1,0 +1,8 @@
+---
+apiVersion: cert-manager.io/v1alpha2
+kind: Issuer
+metadata:
+  name: vault-webhook
+  namespace: kube-system
+spec:
+  selfSigned: {}
